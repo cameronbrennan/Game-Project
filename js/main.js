@@ -1,16 +1,23 @@
 /*------ constants ------*/
-playerChar = {
+function Player(classType, hp, attack, speed) {
+    this.classType = classType,
+    this.hp = hp,
+    this.attack = attack,
+    this.speed = speed
+};
 
-}
-
-enemyChar = {
-
-}
+function Enemy(enemyType, hp, attack, speed){
+    this.enemyType = enemyType,
+    this.hp = hp,
+    this.attack = attack,
+    this.speed=speed
+};
 
 
 /*------ app's state variables ------*/
 // player and enemy hitpoints remaining and status screen updates
-
+let playerStatus = document.getElementsByClassName("p-status");
+let enemyStatus = document.getElementsByClassName("e-status");
 
 // player and enemy actions taken each turn
 
@@ -28,9 +35,8 @@ enemyChar = {
 /*------ event listeners ------*/
 // player actions across ALL states
 // next state
-document.querySelector().addEventListener("click", nextState())
 // previous state (if implimented, note: probably not included in battle state))
-document.querySelector().addEventListener("click", prevState())
+document.querySelector("nav-buttons").addEventListener("click", nextState(), prevState())
 
 // player actions in character select state
 document.querySelector().addEventListener("click", charSel())
@@ -53,6 +59,10 @@ function init(){
 }
 
 function render(){
+
+}
+
+function battle(){
 
 }
 
