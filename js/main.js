@@ -26,7 +26,24 @@ let enemyStatus = document.querySelector("#e-status");
 // player and enemy actions taken each turn
 
 
-// let BattleActions = {
+
+
+// win/loss state - should just be one state with variable display parameters
+
+
+/*------ cached element references ------*/
+// player and enemy objects
+// player and enemy objects are defined as global let variables ahead of their constructors
+/*let player;
+let enemy;*/
+
+// player and enemy status display elements
+let playerStatus;
+let enemyStatus;
+
+// player and enemy actions
+
+// let BattleAction = {
 //     firstAttack: function () {
 //         // who attacks first as a function of dexterity
 //         let getPlayerDex = player.dexterity;
@@ -65,36 +82,14 @@ let enemyStatus = document.querySelector("#e-status");
 //     let 
 // }
 
-
-
-// win/loss state - should just be one state with variable display parameters
-
-
-/*------ cached element references ------*/
-// player and enemy objects
-// player and enemy objects are defined as global let variables ahead of their constructors
-/*let player;
-let enemy;*/
-
-// player and enemy status display elements
-let playerStatus;
-let enemyStatus;
-
-// player and enemy actions
-let playerAction;
-let enemyAction;
-
 // animation for attack and take damage
 // ???
 
 /*------ event listeners ------*/
 
-let warrior = document.querySelector("#btn-warrior");
-Warrior.addEventListener("click", gameDirector.setBattleStart('Warrior'));
-let rogue = document.querySelector("#btn-rogue");
-Rogue.addEventListener("click", gameDirector.setBattleStart('Rogue'));
-let mage = document.querySelector("#btn-mage");
-Mage.addEventListener("click", gameDirector.setBattleStart('Mage'));
+document.getElementById("btn-warrior").addEventListener("click", gameDirector.setBattleStart('Warrior'));
+document.getElementById("btn-rogue").addEventListener("click", gameDirector.setBattleStart('Rogue'));
+document.getElementById("btn-mage").addEventListener("click", gameDirector.setBattleStart('Mage'));
 
 
 /*------ functions ------*/
@@ -106,7 +101,8 @@ let gameDirector = {
         this.setBattlePrep();
     },
     resetPlayer: function (classType){
-        //if warrior, else rogue, else mage
+        //if warrior, else rogue, else mage - init with chosen character
+        // Constuctor Properties (classType, hp, strength, dexterity, magic)
         if (classType = "Warrior"){
             player = new Player (classType, 200, 150, 75, 0);
         } else if (classType = "Rogue"){
@@ -114,26 +110,31 @@ let gameDirector = {
         } else if (classType = "Mage"){
             player = new Player (classType, 100, 80, 100, 200)
         }
-        // Blank Interaction screen...
+        // get elements to render new state
         let userActions = document.querySelector(".userActions");
-        userActions.innerHTML = '';
         let getPlayerChar = document.querySelector(".player");
-        getPlayerChar.innerHTML = '<img src="assets/character-avatars/' + classType.toLowerCase() + '.png" class="avatar"><div><h2>' + classType + '</h2><p>Health: ' + player.health + '</p><p>Strength: ' + player.strength + '</p><p>Dexterity: ' + player.dexterity + '</p><p>Magic: ' + player.magic + '</p></div>';
+        // render new state
+        userActions.innerHTML = '';
+        getPlayerChar.innerHTML = '<img src="assets/character-avatars/' + classType.toLowerCase() + '.png" class="avatar"><div><h2>' + classType.toLowerCase() + '</h2><p>Health: ' + player.health + '</p><p>Strength: ' + player.strength + '</p><p>Dexterity: ' + player.dexterity + '</p><p>Magic: ' + player.magic + '</p></div>';
     },
     setBattlePrep: function () {
+        // get elements to render new state
         let getTasks = document.querySelector(".tasks");
         let getActions = document.querySelector(".userActions");
-        let getArena = document.querySelector(".battle-screen");
+        let getArena = document.querySelector(".battle-arena");
+        // render new state
         getTasks.innerText = "Task: Find your Foe!";
-        getActions.innerHTML = '<a href="#" class = "btn-battle">Generate Enemy!</a>';
+        getActions.innerHTML = '<p><a href="#" class = "btn-battle">Generate Enemy!</a></p>';
         getArena = "";// <- set background image for arena area to Vortex from blank
     },
     setBattle: function(){
+        // get elements to render new state
         let getTasks = document.querySelector(".tasks");
         let getActions = document.querySelector(".userActions");
-        let getArena = document.querySelector(".battle-screen");
+        let getArena = document.querySelector(".battle-arena");
         let getEnemy = document.querySelector(".enemy");
         // Create enemies
+        // Constuctor Properties (classType, hp, strength, dexterity, magic)
         let enemy00 = new Enemy("pride", 200, 125, 60, 60);
         let enemy01 = new Enemy("greed", 125, 125, 80, 70);
         let enemy02 = new Enemy("lust", 100, 150, 60, 100);
@@ -169,8 +170,12 @@ let gameDirector = {
                 enemy = enemy07;
                 break;
         }
+        // render new state with enemies and updated task
         getTasks.textContent = "Task: Choose your action!";
         getActions.innerHTML = '<a href="#" class = "btn-battle">Attack!</a>'
-        getEnemy.innerHTML = '<img src="assets/enemy-avatars/' + classType.toLowerCase() + '.png" class="enemy-avatar"><div><h2>' + classType + '</h2><p>Health: ' + enemy.health + '</p><p>Strength: ' + enemy.strength + '</p><p>Dexterity: ' + enemy.dexterity + '</p><p>Magic: ' + enemy.magic + '</p></div>';
+        getEnemy.innerHTML = '<img src="assets/enemy-avatars/' + classType.toLowerCase() + '.png" class="enemy-avatar"><div><h2>' + classType.toLowerCase() + '</h2><p>Health: ' + enemy.health + '</p><p>Strength: ' + enemy.strength + '</p><p>Dexterity: ' + enemy.dexterity + '</p><p>Magic: ' + enemy.magic + '</p></div>';
+    },
+    Battle: function () {
+
     }
 }
