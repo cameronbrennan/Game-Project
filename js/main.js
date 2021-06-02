@@ -1,7 +1,5 @@
 /*------ constants ------*/
-const playerTypes = ["Warrior", "Rogue", "Mage"];
-const enemyTypes = ["Pride", "Greed", "Lust", "Envy", "Gluttony", "Wrath", "Sloth"];
-
+let player;
 function Player (classType, hp, strength, dexterity, magic) {
     this.classType = classType,
     this.hp = hp,
@@ -10,10 +8,7 @@ function Player (classType, hp, strength, dexterity, magic) {
     this.magic = magic
 };
 
-// warrior stats ("warrior", 200, 150, 75, 0)
-// rogue stats ("rogue", 150, 125, 200, 0)
-// mage stats ("mage", 100, 80, 100, 200)
-
+let enemy;
 function Enemy (enemyType, hp, strength, dexterity, magic){
     this.enemyType = enemyType,
     this.hp = hp,
@@ -21,14 +16,6 @@ function Enemy (enemyType, hp, strength, dexterity, magic){
     this.dexterity = dexterity,
     this.magic = magic
 };
-
-// pride enemy type ("pride", 200, 125, 60, 60)
-// greed enemy type ("greed", 125, 125, 80, 70)
-// lust enemy type ("lust", 100, 150, 60, 100)
-// envy enemy type ("envy", 100, 200, 80, 80)
-// gluttony enemy type ("gluttony", 150, 100, 50, 50)
-// wrath enemy type ("wrath", 150, 50, 100, 60)
-// sloth enemy type ("sloth", 200, 0, 80, 20)
 
 
 /*------ app's state variables ------*/
@@ -39,18 +26,45 @@ let enemyStatus = document.querySelector("#e-status");
 // player and enemy actions taken each turn
 
 
-let playerActions = function(){
-    let playerAttack = function (){
+// let BattleActions = {
+//     firstAttack: function () {
+//         // who attacks first as a function of dexterity
+//         let getPlayerDex = player.dexterity;
+//         let getEnemyDex = enemy.dexterity;
+//     }
+//     // player attack function
+//     let playerAttack = function (){
+//         let rawDamage;
+//         if (player.magic > 0){
+//             rawDamage = player.strength * player.magic / 1000;
+//         } else {
+//             rawDamage = player.strength * player.dexterity / 1000;
+//         }
+//         let damageVariance = Math.floor(Math.random() * 10);
+//         let trueDamage = rawDamage + damageVariance;
+//         // hit this many times (also as a function of dexterity)
+//         let hitCount = Math.floor(Math.random() * Math.floor(player.dexterity / 10) / 3 ) + 1;
+//         let attackValues = [trueDamage, hitCount];
+//         return attackValues;
+//     }
+//     // enemy attack function
+//     let enemyAttack = function () {
+//         let rawDamage;
+//         if (enemy.magic > 0){
+//             rawDamage = enemy.strength * enemy.magic / 1000;
+//         } else {
+//             rawDamage = enemy.strength * enemy.dexterity / 1000;
+//         }
+//         let damageVariance = Math.floor(Math.random(0) * 10);
+//         let trueDamage = rawDamage + damageVariance;
+//         // hit this many times (also as a function of dexterity)
+//         let hitCount = Math.floor(Math.random() * Math.floor(enemy.dexterity / 10) / 4 ) + 1;
+//         let attackValues = [trueDamage, hitCount];
+//         return attackValues;
+//     }
+//     let 
+// }
 
-    }
-
-}
-
-let enemyActions = function(){
-    let enemyAttack = function (){
-
-    }
-}
 
 
 // win/loss state - should just be one state with variable display parameters
@@ -58,8 +72,9 @@ let enemyActions = function(){
 
 /*------ cached element references ------*/
 // player and enemy objects
-let player;
-let enemy;
+// player and enemy objects are defined as global let variables ahead of their constructors
+/*let player;
+let enemy;*/
 
 // player and enemy status display elements
 let playerStatus;
@@ -74,44 +89,50 @@ let enemyAction;
 
 /*------ event listeners ------*/
 
-document.querySelector("#Warrior").addEventListener("click", gameDirector.setBattleStart("Warrior"));
-document.querySelector("#Rogue").addEventListener("click", gameDirector.setBattleStart("Rogue"));
-document.querySelector("#Mage").addEventListener("click", gameDirector.setBattleStart("Mage"));
+let warrior = document.querySelector("#btn-warrior");
+Warrior.addEventListener("click", gameDirector.setBattleStart('Warrior'));
+let rogue = document.querySelector("#btn-rogue");
+Rogue.addEventListener("click", gameDirector.setBattleStart('Rogue'));
+let mage = document.querySelector("#btn-mage");
+Mage.addEventListener("click", gameDirector.setBattleStart('Mage'));
 
 
 /*------ functions ------*/
 
 let gameDirector = {
+    // init functions
     setBattleStart: function (classType){
         this.resetPlayer(classType);
         this.setBattlePrep();
     },
     resetPlayer: function (classType){
         //if warrior, else rogue, else mage
-        if (classType === "Warrior"){
+        if (classType = "Warrior"){
             player = new Player (classType, 200, 150, 75, 0);
-        } else if (classType === "Rogue"){
+        } else if (classType = "Rogue"){
             player = new Player (classType, 150, 125, 200, 0);
-        } else if (classType === "Mage"){
+        } else if (classType = "Mage"){
             player = new Player (classType, 100, 80, 100, 200)
         }
         // Blank Interaction screen...
-        let getInteraction = document.querySelector(".interaction-area")
-        let getPlayerChar = document.querySelector("#p-char");
+        let userActions = document.querySelector(".userActions");
+        userActions.innerHTML = '';
+        let getPlayerChar = document.querySelector(".player");
         getPlayerChar.innerHTML = '<img src="assets/character-avatars/' + classType.toLowerCase() + '.png" class="avatar"><div><h2>' + classType + '</h2><p>Health: ' + player.health + '</p><p>Strength: ' + player.strength + '</p><p>Dexterity: ' + player.dexterity + '</p><p>Magic: ' + player.magic + '</p></div>';
     },
     setBattlePrep: function () {
         let getTasks = document.querySelector(".tasks");
-        let getActions = document.querySelector(".interaction-area");
+        let getActions = document.querySelector(".userActions");
         let getArena = document.querySelector(".battle-screen");
-        getTasks.innerText = "Find your Foe!";
-        getActions.innerHTML = '<a href="#" class = "btn-findEnemy">Generate Enemy!</a>';
+        getTasks.innerText = "Task: Find your Foe!";
+        getActions.innerHTML = '<a href="#" class = "btn-battle">Generate Enemy!</a>';
         getArena = "";// <- set background image for arena area to Vortex from blank
     },
     setBattle: function(){
         let getTasks = document.querySelector(".tasks");
-        let getActions = document.querySelector(".interaction-area");
+        let getActions = document.querySelector(".userActions");
         let getArena = document.querySelector(".battle-screen");
+        let getEnemy = document.querySelector(".enemy");
         // Create enemies
         let enemy00 = new Enemy("pride", 200, 125, 60, 60);
         let enemy01 = new Enemy("greed", 125, 125, 80, 70);
@@ -120,39 +141,36 @@ let gameDirector = {
         let enemy04 = new Enemy("gluttony", 150, 100, 50, 50);
         let enemy05 = new Enemy("wrath", 150, 50, 100, 60);
         let enemy06 = new Enemy("sloth", 200, 150, 80, 20);
-        let generateEnemy = Math.floor(Math.random() * 7);
-        console.log(generateEnemy)
+        let randomEnemy = Math.floor(Math.random() * 7);
+        console.log(randomEnemy)
+        switch (randomEnemy) {
+            case 0:
+                enemy = enemy00;
+                break;
+            case 1:
+                enemy = enemy01;
+                break;
+            case 2:
+                enemy = enemy02;
+                break;
+            case 3:
+                enemy = enemy03;
+                break;
+            case 4:
+                enemy = enemy04;
+                break;
+            case 5:
+                enemy = enemy05;
+                break;
+            case 6:
+                enemy = enemy06;
+                break;
+            case 7:
+                enemy = enemy07;
+                break;
+        }
+        getTasks.textContent = "Task: Choose your action!";
+        getActions.innerHTML = '<a href="#" class = "btn-battle">Attack!</a>'
+        getEnemy.innerHTML = '<img src="assets/enemy-avatars/' + classType.toLowerCase() + '.png" class="enemy-avatar"><div><h2>' + classType + '</h2><p>Health: ' + enemy.health + '</p><p>Strength: ' + enemy.strength + '</p><p>Dexterity: ' + enemy.dexterity + '</p><p>Magic: ' + enemy.magic + '</p></div>';
     }
-}
-
-function battleRound(){
-    if (player.hp > 0 && enemy.hp > 0){
-        player.attack(enemy);
-        console.log("Player attacks " + enemy.classType + " for " + player.attack + " damage!");
-    } if (player.hp > 0 && enemy.hp > 0){
-        enemy.attack(player);
-        console.log("Enemy attacks " + player.classType + " for " + enemy.attack + " damage!");
-    }
-};
-
-function checkWinner(){
-    if (enemy.hp <= 0){
-    console.log(player.classType + " has defeated " + enemy.classType)
-    } if (player.hp <= 0){
-    console.log(enemy.classType + " has defeated " + player.classType)
-    }
-}
-
-while (player.hp > 0 && enemy.hp > 0){
-    battleRound();
-    checkWinner();
-}
-
-function selChar(){
-
-}
-
-// for if I have time to implement a rudamentary dialogue system with NPCs
-function npcInt(){
-
 }
