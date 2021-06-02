@@ -19,12 +19,11 @@ function Enemy (enemyType, hp, strength, dexterity, magic){
 
 
 /*------ app's state variables ------*/
+
+
 // player and enemy hitpoints remaining and status screen updates
 let playerStatus = document.querySelector("#p-status");
 let enemyStatus = document.querySelector("#e-status");
-
-// player and enemy actions taken each turn
-
 
 
 
@@ -34,10 +33,8 @@ let enemyStatus = document.querySelector("#e-status");
 /*------ cached element references ------*/
 // player and enemy objects
 // player and enemy objects are defined as global let variables ahead of their constructors
-/*let player;
-let enemy;*/
 
-// player and enemy status display elements
+// player and enemy healthbar display elements
 let playerStatus;
 let enemyStatus;
 
@@ -87,28 +84,30 @@ let enemyStatus;
 
 /*------ event listeners ------*/
 
-document.getElementById("btn-warrior").addEventListener("click", gameDirector.setBattleStart('Warrior'));
-document.getElementById("btn-rogue").addEventListener("click", gameDirector.setBattleStart('Rogue'));
-document.getElementById("btn-mage").addEventListener("click", gameDirector.setBattleStart('Mage'));
+document.getElementById("btn-warrior").addEventListener("click", gameDirector.initBattle("Warrior"));
+document.getElementById("btn-rogue").addEventListener("click", gameDirector.initBattle("Rogue"));
+document.getElementById("btn-mage").addEventListener("click", gameDirector.initBattle("Mage"));
 
 
 /*------ functions ------*/
 
 let gameDirector = {
     // init functions
-    setBattleStart: function (classType){
+    initBattle: function (classType){
         this.resetPlayer(classType);
         this.setBattlePrep();
     },
     resetPlayer: function (classType){
         //if warrior, else rogue, else mage - init with chosen character
         // Constuctor Properties (classType, hp, strength, dexterity, magic)
-        if (classType = "Warrior"){
+        if (classType === "Warrior"){
             player = new Player (classType, 200, 150, 75, 0);
-        } else if (classType = "Rogue"){
+        } else if (classType === "Rogue"){
             player = new Player (classType, 150, 125, 200, 0);
-        } else if (classType = "Mage"){
+        } else if (classType === "Mage"){
             player = new Player (classType, 100, 80, 100, 200)
+        } else {
+            console.log("Player is not selected");
         }
         // get elements to render new state
         let userActions = document.querySelector(".userActions");
