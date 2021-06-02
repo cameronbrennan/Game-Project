@@ -4,43 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Battle Arena</title>
+    <title>Battle Arena!</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    <header class = "game-logo">Battle Arena!</header>
+    <header class = "game-title">Battle Arena!</header>
 
     <section class = "player-action">SIDE BAR/INTERACTION AREA
-        <div class = "tasks-bar">"Choose your character!"</div>
+        <div class = "tasks">"Choose your character!"</div>
         <div class = "interaction-area">
-            <h2>"Warrior"</h2>
+            <a href="#" id = "Warrior">
+                <h2>"Warrior"</h2>
                 <p>"The warrior has a high damage output and high health, but misses attacks more frequently, and has is very slow</p>
-            <h2>"Rogue"</h2>
+            </a>
+            <a href="#" id = "Rogue">
+                <h2>"Rogue"</h2>
                 <p>"The rogue has a low damage output and average health, but a high speed and can even attack multiple times per round</p>
-            <h2>"Mage"</h2>
+            </a>
+            <a href="#" id = "Mage">
+                <h2>"Mage"</h2>
                 <p>"The mage has high damage output and low health, but both of it's attacks cost Energy, and it has average speed</p>
-            <ul id = "battle-buttons">
-                <li>"Attack 1"</li>
-                <li>"Attack 2"</li>
-                <li>"Defend</li>
-                <li>"Heal</li>
-            </ul>
+            </a>
         </div>
-        <div class = "action-console">"This is where the text for each round results will appear"</div>
-            <ul class = "nav-buttons">"The Next and Previous buttons are here, positioned underneath the action console"
-                <li>"Next"</li>
-                <li>"Previous"</li>
-            </ul>
     </section>
 
     <secion class = "battle-screen">BATTLE SCREEN AREA
-        <div class = "background-img" img src="assets/background-img/vortex.png"></div>
-            <div class = "p-char">"Player Character Sprite/Avatar"</div>
-            <div class = "e-char">"Enemy Character Sprite/Avatar"</div>
-            <div class = "p-status">"Player Status Bar"</div>
-            <div class = "e-status">"Enemy Status Bar"</div>
+        <div class = "background-img" img src="assets/background-images/vortex.png"></div>
+            <div id = "p-char">"Player Character Sprite/Avatar"</div>
+            <div id = "e-char">"Enemy Character Sprite/Avatar"</div>
+            <div id = "p-status">"Player Status Bar"</div>
+            <div id = "e-status">"Enemy Status Bar"</div>
+            <div class = "event-log">"This is where the text for each round results will appear"</div>
         <div class = "play-again">"Play Again? Button"</div>
     </secion>
 
