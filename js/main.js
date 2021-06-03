@@ -8,24 +8,26 @@ class Character {
         this.dexterity = dexterity;
         this.magic = magic;
         this.attack = function (target) {
-            target.health -= Math.floor(Math.random(5) * 15);
+            target.health -= Math.floor(Math.random(5) * 25);
         }
     }
 }
 
 // Would like to implement attack damage as a function of character stats - rough code:
-// let rawDamage;
-//     if (Character.magic > 0){
-//         rawDamage = Character.strength * Character.magic / 1000;
-//     } else {
-//         rawDamage = Character.strength * Character.dexterity / 1000;
-//     }
-//     let damageVariance = Math.floor(Math.random() * 10);
-//     let trueDamage = rawDamage + damageVariance;
-//     // hit this many times (as a function of dexterity)
-//     let hitCount = Math.floor(Math.random() * Math.floor(Character.dexterity / 10) / 3 ) + 1;
-//     let attackValues = [trueDamage, hitCount];
-//     return attackValues;
+
+    // let rawDamage;
+    // if (character.magic > 0){
+    //     rawDamage = character.strength * character.magic / 1000;
+    // } else {
+    //     rawDamage = character.strength * character.dexterity / 1000;
+    // }
+    // let damageVariance = Math.floor(Math.random() * 10);
+    // let trueDamage = rawDamage + damageVariance;
+    // // hit this many times (as a function of dexterity)
+    // let hitCount = Math.floor(Math.random() * Math.floor(character.dexterity / 10) / 3 ) + 1;
+    // let attackValues = [trueDamage, hitCount];
+    // return attackValues;
+    // target.health -= attackValues.value
 
 
 /*------ app's state variables ------*/
@@ -33,7 +35,7 @@ class Character {
 let player;
 let enemy;
 let victor;
-const characterTemplate = `<img src="" alt="">
+const characterTemplate = `<img class = "avatar" src="" alt="">
     <h2></h2>
     <p>Health: <span class = "health"></span></p>`;
 
@@ -62,9 +64,9 @@ const gameWinnerEl = document.querySelector(".game-winner");
 
 /*------ event listeners ------*/
 
-// document.getElementById("btn-warrior").addEventListener("click", initBattle);
-// document.getElementById("btn-rogue").addEventListener("click", initBattle);
-// document.getElementById("btn-mage").addEventListener("click", initBattle);
+// document.getElementById("btn-warrior").addEventListener("click", init);
+// document.getElementById("btn-rogue").addEventListener("click", init);
+// document.getElementById("btn-mage").addEventListener("click", init);
 document.querySelector("#attack").addEventListener("click", battle);
 
 
