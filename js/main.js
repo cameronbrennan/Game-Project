@@ -38,9 +38,7 @@ let victor;
 const characterTemplate = `<img class = "avatar" src="" alt="">
     <h2></h2>
     <p>Health: <span class = "health"></span></p>`;
-
-
-// player and enemy hitpoints remaining and status screen updates (as health bars if I can style it, else forget it!)
+// ^^^player and enemy hitpoints remaining^^^ and status screen updates (as health bars if I can style it, else forget it!)
 
 
 // win/loss state - should just be one state with variable display parameters
@@ -53,21 +51,25 @@ const statusEls = {
 }
 
 const charactersEl = document.querySelector(".characters");
-
 const gameWinnerEl = document.querySelector(".game-winner");
-
-
-
+const battleArenaEl = document.querySelector(".battle-arena");
+// to be replaced with ul element when I add more character actions
+const actionButtonEls = document.querySelector("#attack");
+const playAgainButton = document.querySelector("#play-again");
 
 // animation for attack and take damage
 // css shake style?
 
 /*------ event listeners ------*/
 
+// individual click listeners from previous build with character choice
 // document.getElementById("btn-warrior").addEventListener("click", init);
 // document.getElementById("btn-rogue").addEventListener("click", init);
 // document.getElementById("btn-mage").addEventListener("click", init);
+
 document.querySelector("#attack").addEventListener("click", battle);
+// play again button implementation
+// document.querySelector("#play-again").addEventListener("click", playAgain);
 
 
 /*------ functions ------*/
@@ -106,6 +108,9 @@ function render (){
         gameWinnerEl.textContent = victor.name;
         let winState = document.querySelector(".win-state")
         winState.classList.remove("hidden");
+        playAgainButton.classList.remove("hidden");
+        battleArenaEl.classList.add("hidden");
+        actionButtonEls.classList.add("hidden");
     }
 }
 
@@ -134,3 +139,13 @@ function getWinner(playerChar, enemyChar){
     // else return null
     return null;
 }
+
+// function to clear battleArena and characterEls and re-initialize game
+// function playAgain() {
+//     init();
+//     let winState = document.querySelector(".win-state");
+//     winState.classList.add("hidden");
+//     playAgainButton.classList.add("hidden");
+//     battleArenaEl.classList.remove("hidden");
+//     actionButtonEls.classList.remove("hidden");
+// }
