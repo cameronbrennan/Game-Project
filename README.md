@@ -15,12 +15,19 @@
 ###### The battle will play out in these turns until one character's HP reaches zero, at which point there will be a "Victory!" or "Defeat..." end state as well as the options to re-initialize and play again.
 
 ###### Take a look at my wireframe models and rough pseudocode to see what the initial design concept was:
-![wireframe1](wireframe1.png)
+
+<img src = "wireframe+pseudocode/wireframe1.png" alt = "Wireframe 1" width = "640" height = "360">
+
 ###### This is my planned game view
-![wireframe2](wireframe2.png)
+
+<img src = "wireframe+pseudocode/wireframe2.png" alt = "Wireframe 2" width = "640" height = "360">
+
 ###### These represent the different states of the user interface nav
-![pseudo1](pseudo1.png)
-![pseudo2](pseudo2.png)
+
+<img src = "wireframe+pseudocode/pseudo1.png" alt = "Pseudo 1" width = "640" height = "360">
+
+<img src = "wireframe+pseudocode/pseudo2.png" alt = "Pseudo 2" width = "640" height = "360">
+
 ###### And some of the early ideas of the basic game functions and variables
 
 #### Thank you for reading through this far, and I'm looking forward to working on and sharing the development process as it comes along!
@@ -41,11 +48,17 @@
 ###### All of that out of the  way, I think what I've come up with is a great first step in creating the game as it was originally conceived. My approach to starting this project was definitely macro -> micro and it's clear that this was folly. While I know that I came up with some great ideas and workable code for representing some of the basic RPG game theory in this project, the inevitable scale of having so many game state changes and including the variability that I wanted was just too much to accomplish in 7 days. From this framework and my insistance on sticking with "future feature" centered design decisions though (such as using a character class constructor, creating element templates, and the original implimentation of a gameDirector object), I think that what I set out to do is very achievable.
 
 ###### Now that I have a functioning game though, check out some of these sweet, sweet screengrabs of it in action:
-![initState](initState.png)
+
+<img src = "game-captures/initState.png" alt = "initState" width = "640" height = "360">
+
 ###### Game starts with you facing off against the evil Pride Monster
-![playState](playState.png)
+
+<img src = "game-captures/playState.png" alt = "playState" width = "640" height = "360">
+
 ###### After a few rounds of battle 
-![winState](winState.png)
+
+<img src = "game-captures/winState.png" alt = "winState" width = "640" height = "360">
+
 ###### I can't believe I chose to use a win state where the player character lost!
 
 ##### **Last but not least** some future development plans:
