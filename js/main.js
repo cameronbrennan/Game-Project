@@ -42,7 +42,7 @@ const gameWinnerEl = document.querySelector(".game-winner");
 // creates attack button element for functions
 // (will eventually be replaced with ul  when I add more character actions)
 const actionButtonEls = document.querySelector("#attack");
-// creates (currently non-functional) play again button
+// creates play again button
 const playAgainButton = document.querySelector("#play-again");
 
 /*------ event listeners ------*/
@@ -95,6 +95,7 @@ function render() {
     playAgainButton.classList.remove("hidden");
     battleArenaEl.classList.add("hidden");
     actionButtonEls.classList.add("hidden");
+    playAgainButton.setAttribute("onclick", "window.location.reload()");
   }
 }
 // battle function runs a single player and enemy attack, reports result as console log
