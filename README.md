@@ -51,7 +51,7 @@
 
 <img src = "game-captures/initState.png" alt = "initState" width = "640" height = "360">
 
-###### Game starts with you facing off against the evil Pride Monster
+###### Game starts with you facing off against the Pride Monster
 
 <img src = "game-captures/playState.png" alt = "playState" width = "640" height = "360">
 
