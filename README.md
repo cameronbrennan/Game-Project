@@ -2,7 +2,7 @@
 
 ##### Development start date: 05/27/2021
 ### This is my first attempt at making a game with JS, and was inspired by the turn-based rpgs of my childhood such as "Chrono Trigger" and the Final Fantasy series.
-### Please refer to the bottom of the page for a list of technologies used, as well as credit for the avatar images that I was able to find. Please note, this game is NOT for profit and is simply a project that I am continuing to work on as I improve as an engineer.
+### Please refer to the bottom of the page for a link to the gh-pages version of <Battle Arena!>, a list of technologies used, as well as credit for the avatar images that I was able to find. Please note, this game is NOT for profit and is simply a project that I am continuing to work on as I improve as an engineer.
 
 #### During this initial phase of development, I am going to be solely focused on implementing a very basic battle arena with light RPG elements. During this stage, there will be no implementation of player selected character stats or leveling up as you would traditionally see in a role playing game, but I hope to be able to add these features down the line. For now, the game flow is listed below:
 
@@ -15,12 +15,12 @@
 ###### The battle will play out in these turns until one character's HP reaches zero, at which point there will be a "Victory!" or "Defeat..." end state as well as the options to re-initialize and play again.
 
 ###### Take a look at my wireframe models and rough pseudocode to see what the initial design concept was:
-![wireframe1](wireframe1.jpeg)
+![wireframe1](wireframe1.png)
 ###### This is my planned game view
-![wireframe2](wireframe2.jpeg)
+![wireframe2](wireframe2.png)
 ###### These represent the different states of the user interface nav
-![pseudo1](pseudo1.jpeg)
-![pseudo2](pseudo2.jpeg)
+![pseudo1](pseudo1.png)
+![pseudo2](pseudo2.png)
 ###### And some of the early ideas of the basic game functions and variables
 
 #### Thank you for reading through this far, and I'm looking forward to working on and sharing the development process as it comes along!
@@ -61,6 +61,9 @@
 ###### <space><space>*<space> Create a player and enemy sprite that can be shown in the Battle Arena once the battle commences
 
 ###### Anyways, that's all for now as updates go. I'm going to try to update this readme with progress updates because I am DEFINITELY planning on implimenting many of the game logic ideas that I had started on moving forward!
+
+#### GH-PAGES DEPLOYED GAME
+###### https://cameronbrennan.github.io/Game-Project/
 
 #### TECHNOLOGIES USED:
 ###### HTML (index.html)
