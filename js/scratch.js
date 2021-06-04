@@ -42,24 +42,20 @@ let enemyStatus;
 
 // player and enemy actions
 
-
-// character attack function (with damage defined by stats)
-player.attack = function (){
+// Planned implimentation of attack damage as a function of character stats - rough code:
     let rawDamage;
-    if (player.magic > 0){
-        rawDamage = (player.strength * player.magic) / 1200;
+    if (character.magic > 0){
+        rawDamage = character.strength * character.magic / 1000;
     } else {
-        rawDamage = (player.strength * player.dexterity) / 1200;
+        rawDamage = character.strength * character.dexterity / 1000;
     }
-    // add damage variance to produce different attack results
     let damageVariance = Math.floor(Math.random() * 10);
-    // and have that as a calculation in the trueDamage output
     let trueDamage = rawDamage + damageVariance;
     // hit this many times (as a function of dexterity)
-    let hitCount = Math.floor(Math.random() * Math.floor(player.dexterity / 10) / 3 ) + 1;
+    let hitCount = Math.floor(Math.random() * Math.floor(character.dexterity / 10) / 3 ) + 1;
     let attackValues = [trueDamage, hitCount];
     return attackValues;
-}
+    target.health -= attackValues.value
 
 
 // animation for attack and take damage
@@ -67,9 +63,14 @@ player.attack = function (){
 
 /*------ event listeners ------*/
 
-// document.getElementById("btn-warrior").addEventListener("click", initBattle);
-// document.getElementById("btn-rogue").addEventListener("click", initBattle);
-// document.getElementById("btn-mage").addEventListener("click", initBattle);
+/* 
+individual click listeners from previous build with character choice
+// document.getElementById("btn-warrior").addEventListener("click", init);
+// document.getElementById("btn-rogue").addEventListener("click", init);
+// document.getElementById("btn-mage").addEventListener("click", init);
+play again button used to call playAgain()
+// document.querySelector("#play-again").addEventListener("click", playAgain);
+*/
 
 
 /*------ functions ------*/
@@ -102,19 +103,19 @@ let gameDirector = {
     //     let getPlayerEl = document.querySelector(".player");
     //     getPlayerEl.innerHTML = '';
     // },
-//     setBattlePrep: function () {
-//         let getTasks = document.querySelector(".tasks");
-//         let getActions = document.querySelector(".userActions");
-//         let getArena = document.querySelector(".battle-screen");
-//         getTasks.innerText = "Task: Find your Foe!";
-//         getActions.innerHTML = '<a href="#" class = "btn-battle">Generate Enemy!</a>';
-//         getArena = "";// <- set background image for arena area to Vortex from blank
-//     },
-//     setBattle: function(){
-//         let getTasks = document.querySelector(".tasks");
-//         let getActions = document.querySelector(".userActions");
-//         let getArena = document.querySelector(".battle-screen");
-//         let getEnemy = document.querySelector(".enemy");
+    // setBattlePrep: function () {
+    //     let taskEl = document.querySelector(".tasks");
+    //     let getActions = document.querySelector(".userActions");
+    //     let getArena = document.querySelector(".battle-screen");
+    //     taskEl.innerText = "Task: Find your Foe!";
+    //     getActions.innerHTML = '<a href="#" class = "btn-battle">Generate Enemy!</a>';
+    //     getArena = "";// <- set background image for arena area to Vortex from blank
+    // },
+    // setBattle: function(){
+    //     let taskEl = document.querySelector(".tasks");
+    //     let actionsEl = document.querySelector(".userActions");
+    //     let arenaEl = document.querySelector(".battle-screen");
+    //     let enemyEl = document.querySelector(".enemy");
 
         // !!!Create enemies!!!
         // NOTE: Okay this was really cool and fun to build. I will need to re-work
@@ -157,8 +158,15 @@ let gameDirector = {
                 enemy = enemy07;
                 break;
         }
-//         getTasks.textContent = "Task: Choose your action!";
-//         getActions.innerHTML = '<a href="#" class = "btn-battle">Attack!</a>'
-//         getEnemyEl.innerHTML = '';
     }
 }
+
+// function to clear battleArena and characterEls and re-initialize game (incomplete from current build)
+// // function playAgain() {
+// //    init();
+// //    let winState = document.querySelector(".win-state");
+// //    winState.classList.add("hidden");
+// //    playAgainButton.classList.add("hidden");
+// //    battleArenaEl.classList.remove("hidden");
+// //    actionButtonEls.classList.remove("hidden");
+// //}
