@@ -14,7 +14,7 @@ body {
     font-family: 'MedievalSharp', cursive;
     grid-template-columns: 1fr 4fr;
     grid-template-rows: 50px 1fr 30px;
-    grid-gap: 5px;
+    border: 5px solid silver;
 }
 
 header {
@@ -25,33 +25,30 @@ header {
     justify-content: center;
     font-size: 40px;
     grid-column: 2/3;
+    border-bottom: 5px solid silver;
 }
 
 section {
     display: grid;
-    grid-column: 2/3
+    grid-column: 2/3;
 }
 
 nav {
     display: grid;
     background-color: black;
     justify-content: center;
+    border-right: 5px solid silver;
 }
 
 footer {
     background-color: black;
     color: whitesmoke;
     text-align: center;
+    border-top: 5px solid silver;
 }
 
 header, footer {
     grid-column: 1/3;
-}
-
-#attack button {
-    justify-content: center;
-    background-color: black;
-    color: goldenrod;
 }
 
 .battle-arena {
@@ -59,12 +56,18 @@ header, footer {
     background-color: grey;
     background-size: cover;
     background-repeat: no-repeat;
+    justify-content: center;
     display: flex;
 }
 
 .characters div {
     display: inline-table;
     margin: 25px 25px 25px 25px;
+}
+
+.userActions {
+    display: grid;
+    justify-content: center;
 }
 
 div.tasks {
@@ -75,7 +78,7 @@ div.tasks {
     height: 50px;
     width: px;
     border: 5px solid goldenrod;
-    border-radius: 15%;
+    border-radius: 5%;
 }
 
 .win-state {
@@ -90,6 +93,7 @@ div.tasks {
     background: whitesmoke;
     border: 3px solid goldenrod;
     border-radius: 15%;
+    text-align: center;
 }
 
 .enemy h2, p {
@@ -97,6 +101,17 @@ div.tasks {
     background: whitesmoke;
     border: 3px solid goldenrod;
     border-radius: 15%;
+    text-align: center;
+}
+
+#attack {
+    margin: 0 auto;
+    background-color: black;
+    color: goldenrod;
+    border: 5px solid whitesmoke;
+    border-radius: 5%;
+    height: 50px;
+    width: 200px;
 }
 
 .hidden {

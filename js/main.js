@@ -1,5 +1,6 @@
 /*------ constants ------*/
-
+// character constructor as a class to allow future development of multiple
+// character types, and allow their actions to be a function of their stats
 class Character {
     constructor (name, health, strength, dexterity, magic) {
         this.name = name;
@@ -13,8 +14,7 @@ class Character {
     }
 }
 
-// Would like to implement attack damage as a function of character stats - rough code:
-
+// Planned implimentation of attack damage as a function of character stats - rough code:
     // let rawDamage;
     // if (character.magic > 0){
     //     rawDamage = character.strength * character.magic / 1000;
@@ -31,49 +31,53 @@ class Character {
 
 
 /*------ app's state variables ------*/
-
+// player & enemy variables for constructor
 let player;
 let enemy;
+// victor variable for getWinner function to populate
 let victor;
+// character create template for easy implimentation of future character additions
 const characterTemplate = `<img class = "avatar" src="" alt="">
     <h2></h2>
     <p>Health: <span class = "health"></span></p>`;
-// ^^^player and enemy hitpoints remaining^^^ and status screen updates (as health bars if I can style it, else forget it!)
-
-
-// win/loss state - should just be one state with variable display parameters
+// ^^^player and enemy hitpoints remaining^^^ and status screen updates
+// will add health bar styling in next round of development updates
 
 /*------ cached element references ------*/
-// player and enemy display elements
+// player and enemy health display elements
 const statusEls = {
     playerHealth: null,
     enemyHealth: null
 }
-
-const charactersEl = document.querySelector(".characters");
-const gameWinnerEl = document.querySelector(".game-winner");
+// create element for the battle area
 const battleArenaEl = document.querySelector(".battle-arena");
-// to be replaced with ul element when I add more character actions
+// create element for the character div
+const charactersEl = document.querySelector(".characters");
+// win/loss state (hidden until getWinner finds victor)
+const gameWinnerEl = document.querySelector(".game-winner");
+// creates attack button element for functions
+// (will eventually be replaced with ul  when I add more character actions)
 const actionButtonEls = document.querySelector("#attack");
+// creates (currently non-functional) play again button
 const playAgainButton = document.querySelector("#play-again");
 
-// animation for attack and take damage
-// css shake style?
-
 /*------ event listeners ------*/
-
-// individual click listeners from previous build with character choice
+// single "attack" button in current build - future build will include:
+// attack1, attack2, defend, and heal player actions
+document.querySelector("#attack").addEventListener("click", battle);
+/* 
+individual click listeners from previous build with character choice
 // document.getElementById("btn-warrior").addEventListener("click", init);
 // document.getElementById("btn-rogue").addEventListener("click", init);
 // document.getElementById("btn-mage").addEventListener("click", init);
-
-document.querySelector("#attack").addEventListener("click", battle);
-// play again button implementation
+play again button used to call playAgain()
 // document.querySelector("#play-again").addEventListener("click", playAgain);
-
+*/
 
 /*------ functions ------*/
-
+// init function currently set to specific character constructors
+// future builds will resetPlayer and include a character select as well
+// as a randomly generate enemy function
 init();
 function init (){
     console.log("init has run");
@@ -87,7 +91,8 @@ function init (){
     statusEls.enemyHealth = enemyEl.querySelector(".health");
     render();
 }
-
+// util function to create the characters for 'enemy' and 'player' variables
+// as well as attach the correct avatar image and set classname for callbacks
 function makeCharacterEl (character, elClass){
     let characterDiv = document.createElement("div")
     characterDiv.className = elClass;
@@ -97,13 +102,14 @@ function makeCharacterEl (character, elClass){
     characterDiv.querySelector("img").src = `assets/character-avatars/${character.name.toLowerCase()}.png`;
     return characterDiv;
 }
-
-
+// render function - pushes updates to player and enemy health elements
 function render (){
     console.log ("render is firing after init finished");
-    // should update player and enemy health value after each battle()
+    // update player and enemy health value after each battle()
     statusEls.playerHealth.textContent = player.health;
     statusEls.enemyHealth.textContent = enemy.health;
+    // and includes the check to make sure that victor.name is truthy so that
+    // it can run all the time, even when victor=null/undefined
     if (victor){
         gameWinnerEl.textContent = victor.name;
         let winState = document.querySelector(".win-state")
@@ -113,20 +119,22 @@ function render (){
         actionButtonEls.classList.add("hidden");
     }
 }
-
+// battle function runs a single player and enemy attack, reports result as console log
+// (will eventually have the results reported to a new element for battle status)
+// completes by calling getWinner to check win conditions, and render() to update view
 function battle(){
     if (player.health > 0 && enemy.health > 0){
         player.attack(enemy);
         console.log ("Warrior attacks " + enemy.name + "! Enemy Health: " + enemy.health);
-        
-    } if (player.health > 0 && enemy.health > 0){
+    } 
+    if (player.health > 0 && enemy.health > 0){
         enemy.attack(player);
         console.log ("Pride attacks " + player.name + "! Player Health: " + player.health);   
     }
     victor = getWinner(player, enemy);
     render();
 }
-
+//getWinner checks player and enemy health to define victor if character health <= 0
 function getWinner(playerChar, enemyChar){
     // if enemy health is <= 0 return playerChar
     if (enemyChar.health <= 0){
@@ -140,12 +148,12 @@ function getWinner(playerChar, enemyChar){
     return null;
 }
 
-// function to clear battleArena and characterEls and re-initialize game
-// function playAgain() {
-//     init();
-//     let winState = document.querySelector(".win-state");
-//     winState.classList.add("hidden");
-//     playAgainButton.classList.add("hidden");
-//     battleArenaEl.classList.remove("hidden");
-//     actionButtonEls.classList.remove("hidden");
-// }
+// function to clear battleArena and characterEls and re-initialize game (incomplete)
+// // function playAgain() {
+// //    init();
+// //    let winState = document.querySelector(".win-state");
+// //    winState.classList.add("hidden");
+// //    playAgainButton.classList.add("hidden");
+// //    battleArenaEl.classList.remove("hidden");
+// //    actionButtonEls.classList.remove("hidden");
+// //}

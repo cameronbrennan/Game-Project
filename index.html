@@ -5,34 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battle Arena!</title>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class = "game-title">Battle Arena!</header>
-
     <nav class = "userInt">
         <div class = "tasks">Task: Attack the Enemy!</div>
         <div class = "userActions">
             <button id="attack">Attack!</button>
         </div>
     </nav>
-
     <section class = "battle-arena">
-        <!-- <img src="assets/background-images/vortex.png" alt="battle vortex"> -->
         <div class = "characters">   
         </div>
-        <!-- <div class = "battle-status">battle status</div> -->
+        <!-- <div class = "battle-status">battle status</div> <- div for text turn updates in future build-->
     </section>
-
     <section class = "win-state hidden">
         <h1><span class = "game-winner"></span> wins the Battle!</h1>
         <button id = "play-again" class = "hidden">Want to Play Again? - refresh your browser!</button>
     </section>
-
     <footer class = "credits">Created by Cameron Brennan</footer>
-    
     <script src="js/main.js"></script>
 </body>
 </html>
