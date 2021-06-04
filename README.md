@@ -1,8 +1,10 @@
 ## Hello! Thank you for checking out my project - <Battle Arena!>
 
-##### Development start date: 05/27/2021
 ### This is my first attempt at making a game with JS, and was inspired by the turn-based rpgs of my childhood such as "Chrono Trigger" and the Final Fantasy series.
 ### Please refer to the bottom of the page for a link to the gh-pages version of <Battle Arena!>, a list of technologies used, as well as credit for the avatar images that I was able to find. Please note, this game is NOT for profit and is simply a project that I am continuing to work on as I improve as an engineer.
+
+
+##### Development start date: 05/27/2021
 
 #### During this initial phase of development, I am going to be solely focused on implementing a very basic battle arena with light RPG elements. During this stage, there will be no implementation of player selected character stats or leveling up as you would traditionally see in a role playing game, but I hope to be able to add these features down the line. For now, the game flow is listed below:
 
