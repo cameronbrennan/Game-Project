@@ -15,12 +15,12 @@
 ###### The battle will play out in these turns until one character's HP reaches zero, at which point there will be a "Victory!" or "Defeat..." end state as well as the options to re-initialize and play again.
 
 ###### Take a look at my wireframe models and rough pseudocode to see what the initial design concept was:
-![](Game-Project/wireframe+pseudocode/RPG Battle Arena Wireframe:Pseudocode.002.jpeg)
+![wireframe1](wireframe1.jpeg)
 ###### This is my planned game view
-![](Game-Project/wireframe+pseudocode/RPG Battle Arena Wireframe:Pseudocode.003.jpeg)
-###### These represent the different states of the user interface nav section
-![](Game-Project/wireframe+pseudocode/RPG Battle Arena Wireframe:Pseudocode.005.jpeg)
-![](Game-Project/wireframe+pseudocode/RPG Battle Arena Wireframe:Pseudocode.006.jpeg)
+![wireframe2](wireframe2.jpeg)
+###### These represent the different states of the user interface nav
+![pseudo1](pseudo1.jpeg)
+![pseudo2](pseudo2.jpeg)
 ###### And some of the early ideas of the basic game functions and variables
 
 #### Thank you for reading through this far, and I'm looking forward to working on and sharing the development process as it comes along!
@@ -41,11 +41,11 @@
 ###### All of that out of the  way, I think what I've come up with is a great first step in creating the game as it was originally conceived. My approach to starting this project was definitely macro -> micro and it's clear that this was folly. While I know that I came up with some great ideas and workable code for representing some of the basic RPG game theory in this project, the inevitable scale of having so many game state changes and including the variability that I wanted was just too much to accomplish in 7 days. From this framework and my insistance on sticking with "future feature" centered design decisions though (such as using a character class constructor, creating element templates, and the original implimentation of a gameDirector object), I think that what I set out to do is very achievable.
 
 ###### Now that I have a functioning game though, check out some of these sweet, sweet screengrabs of it in action:
-![](Game-Project/game-captures/1_Starting Game State.png)
+![initState](initState.png)
 ###### Game starts with you facing off against the evil Pride Monster
-![](Game-Project/game-captures/2_After a few rounds of Battle (with updated Health values).png)
+![playState](playState.png)
 ###### After a few rounds of battle 
-![](Game-Project/game-captures/3_Win State (I LOST!?!?!).png)
+![winState](winState.png)
 ###### I can't believe I chose to use a win state where the player character lost!
 
 ##### **Last but not least** some future development plans:
